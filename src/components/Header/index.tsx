@@ -1,8 +1,7 @@
 /** @jsx jsx */
+/** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 
-function Header() {
+export function Header() {
   return;
 }
-
-export default Header;

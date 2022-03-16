@@ -2,6 +2,6 @@
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 
-export function FloorButton() {
+export function Introduction() {
   return <div></div>;
 }
