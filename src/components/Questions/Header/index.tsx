@@ -8,9 +8,10 @@ const wrapperStyle = css`
   position: sticky;
   top: 0;
   display: flex;
-  background: #000;
+  background: #fff;
   width: 100%;
   height: 100px;
+  z-index: 10;
 `;
 
 export function Header() {

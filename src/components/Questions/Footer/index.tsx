@@ -9,6 +9,7 @@ const wrapperStyle = css`
   background: #000;
   width: 100%;
   height: 100px;
+  z-index: 10;
 `;
 
 export function Footer() {
