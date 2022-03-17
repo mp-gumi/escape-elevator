@@ -5,13 +5,14 @@ import { FloorIndication } from "./FloorIndication";
 import { FloorPrefix } from "./FloorPrefix";
 
 const wrapperStyle = css`
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
-  background: #fff;
+  background: #000;
   width: 100%;
   height: 100px;
   z-index: 10;
+  max-width: 600px;
 `;
 
 export function Header() {

@@ -5,9 +5,13 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Body } from "./Body";
 
+const wrapperStyle = css`
+  width: 100%;
+`;
+
 export function Questions() {
   return (
-    <div>
+    <div css={wrapperStyle}>
       <Header />
       <Body />
       <Footer />
