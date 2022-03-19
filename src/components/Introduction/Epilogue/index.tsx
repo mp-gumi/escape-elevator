@@ -1,6 +1,6 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
-import { jsx, css } from "@emotion/react";
+import { jsx } from "@emotion/react";
 
 export function Epilogue() {
   return (
@@ -23,13 +23,14 @@ export function Epilogue() {
       <p>上昇するはずのエレベーターは、突然下降し始めた。</p>
       <p>「やられた…」</p>
       <p>
-        階数表示が「B1F」から変わらないエレベーターの中で、俺は小さな声で呟いた。
+        階数表示が「B1F」から変わらないエレベーターの中で、
+        私は小さな声で呟いた。
       </p>
       <p>
         階数表示から目線を下ろすと、扉のディスプレイに問題が表示されている。
       </p>
       <p>どうやら、この問題を解いていけば脱出できるようだ。</p>
-      <p>俺は、この手荒な誕生日サプライズに挑むことにした。</p>
+      <p>私は、この手荒な誕生日サプライズに挑むことにした。</p>
     </div>
   );
 }
