@@ -2,6 +2,8 @@
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 import { FloorButton } from "./FloorButton";
+import { useContext } from "react";
+import { AnswersContext } from "../../../contexts";
 
 const footerHeight = 150;
 const gap = 10;
@@ -37,73 +39,54 @@ const buttonsWrapperStyle = css`
   width: 100%;
 `;
 
-const answerStorage = window.localStorage;
-
 export function Footer() {
+  const {
+    b1fAnswer,
+    b2fAnswer,
+    b3fAnswer,
+    b4fAnswer,
+    b5fAnswer,
+    b6fAnswer,
+    b7fAnswer,
+    b8fAnswer,
+    b9fAnswer,
+    // b10fAnswer,
+  } = useContext(AnswersContext);
+
   return (
     <div css={wrapperStyle}>
       <div css={buttonsWrapperStyle}>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="1"
-            disabled={answerStorage.getItem("b1f") !== "clear"}
-          />
+          <FloorButton floorLabel="1" disabled={false} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="2"
-            disabled={answerStorage.getItem("b2f") !== "clear"}
-          />
+          <FloorButton floorLabel="2" disabled={!Boolean(b1fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="3"
-            disabled={answerStorage.getItem("b3f") !== "clear"}
-          />
+          <FloorButton floorLabel="3" disabled={!Boolean(b2fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="4"
-            disabled={answerStorage.getItem("b4f") !== "clear"}
-          />
+          <FloorButton floorLabel="4" disabled={!Boolean(b3fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="5"
-            disabled={answerStorage.getItem("b5f") !== "clear"}
-          />
+          <FloorButton floorLabel="5" disabled={!Boolean(b4fAnswer)} />
         </div>
       </div>
       <div css={buttonsWrapperStyle}>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="6"
-            disabled={answerStorage.getItem("b6f") !== "clear"}
-          />
+          <FloorButton floorLabel="6" disabled={!Boolean(b5fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="7"
-            disabled={answerStorage.getItem("b7f") !== "clear"}
-          />
+          <FloorButton floorLabel="7" disabled={!Boolean(b6fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="8"
-            disabled={answerStorage.getItem("b8f") !== "clear"}
-          />
+          <FloorButton floorLabel="8" disabled={!Boolean(b7fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="9"
-            disabled={answerStorage.getItem("b9f") !== "clear"}
-          />
+          <FloorButton floorLabel="9" disabled={!Boolean(b8fAnswer)} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton
-            floorLabel="10"
-            disabled={answerStorage.getItem("b10f") !== "clear"}
-          />
+          <FloorButton floorLabel="10" disabled={!Boolean(b9fAnswer)} />
         </div>
       </div>
     </div>

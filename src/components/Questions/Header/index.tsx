@@ -8,6 +8,9 @@ const wrapperStyle = css`
   position: fixed;
   top: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   background: #000;
   width: 100%;
   height: 100px;

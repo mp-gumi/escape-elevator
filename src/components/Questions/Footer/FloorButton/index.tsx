@@ -24,14 +24,23 @@ const enableButtonColor = css`
   color: #fff;
 `;
 const disableButtonColor = css`
-  color: #808080;
+  color: #4d4d4d;
 `;
 
 export function FloorButton(props: Props) {
   const { floorLabel, disabled } = props;
 
-  return (
-    <Link to={`b${floorLabel}f`} smooth={true}>
+  const handleSetActive = () => {};
+
+  return disabled ? (
+    <div css={[buttonStyle, disableButtonColor]}>{floorLabel}</div>
+  ) : (
+    <Link
+      to={`b${floorLabel}f`}
+      smooth={true}
+      spy={true}
+      onSetActive={handleSetActive}
+    >
       <div
         css={[buttonStyle, disabled ? disableButtonColor : enableButtonColor]}
       >

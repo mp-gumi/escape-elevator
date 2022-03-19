@@ -1,6 +1,6 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
-import { jsx } from "@emotion/react";
+import { css, jsx } from "@emotion/react";
 import { Floor } from "./Floor";
 import b1f from "../../../Images/b1f.png";
 import b2f from "../../../Images/b2f.png";
@@ -12,7 +12,8 @@ import b7f from "../../../Images/b7f.png";
 import b8f from "../../../Images/b8f.png";
 import b9f from "../../../Images/b9f.png";
 import b10f from "../../../Images/b10f.png";
-import { useState } from "react";
+import { useContext } from "react";
+import { AnswersContext } from "../../../contexts";
 
 const b1fAnswersList = [
   "pencil",
@@ -44,20 +45,36 @@ const b10fAnswersList = [
   "どーなっつ",
 ];
 
+const wrapperStyle = css`
+  background-color: #202020;
+`;
+
 export function Body() {
-  const [b1fAnswer, setB1fAnswer] = useState("");
-  const [b2fAnswer, setB2fAnswer] = useState("");
-  const [b3fAnswer, setB3fAnswer] = useState("");
-  const [b4fAnswer, setB4fAnswer] = useState("");
-  const [b5fAnswer, setB5fAnswer] = useState("");
-  const [b6fAnswer, setB6fAnswer] = useState("");
-  const [b7fAnswer, setB7fAnswer] = useState("");
-  const [b8fAnswer, setB8fAnswer] = useState("");
-  const [b9fAnswer, setB9fAnswer] = useState("");
-  const [b10fAnswer, setB10fAnswer] = useState("");
+  const {
+    b1fAnswer,
+    setB1fAnswer,
+    b2fAnswer,
+    setB2fAnswer,
+    b3fAnswer,
+    setB3fAnswer,
+    b4fAnswer,
+    setB4fAnswer,
+    b5fAnswer,
+    setB5fAnswer,
+    b6fAnswer,
+    setB6fAnswer,
+    b7fAnswer,
+    setB7fAnswer,
+    b8fAnswer,
+    setB8fAnswer,
+    b9fAnswer,
+    setB9fAnswer,
+    b10fAnswer,
+    setB10fAnswer,
+  } = useContext(AnswersContext);
 
   return (
-    <div>
+    <div css={wrapperStyle}>
       <Floor
         floorImage={b1f}
         floorLabel="b1f"
@@ -65,69 +82,87 @@ export function Body() {
         answer={b1fAnswer}
         setAnswer={setB1fAnswer}
       />
-      <Floor
-        floorImage={b2f}
-        floorLabel="b2f"
-        answersList={b2fAnswersList}
-        answer={b2fAnswer}
-        setAnswer={setB2fAnswer}
-      />
-      <Floor
-        floorImage={b3f}
-        floorLabel="b3f"
-        answersList={b3fAnswersList}
-        answer={b3fAnswer}
-        setAnswer={setB3fAnswer}
-      />
-      <Floor
-        floorImage={b4f}
-        floorLabel="b4f"
-        answersList={b4fAnswersList}
-        answer={b4fAnswer}
-        setAnswer={setB4fAnswer}
-      />
-      <Floor
-        floorImage={b5f}
-        floorLabel="b5f"
-        answersList={b5fAnswersList}
-        answer={b5fAnswer}
-        setAnswer={setB5fAnswer}
-      />
-      <Floor
-        floorImage={b6f}
-        floorLabel="b6f"
-        answersList={b6fAnswersList}
-        answer={b6fAnswer}
-        setAnswer={setB6fAnswer}
-      />
-      <Floor
-        floorImage={b7f}
-        floorLabel="b7f"
-        answersList={b7fAnswersList}
-        answer={b7fAnswer}
-        setAnswer={setB7fAnswer}
-      />
-      <Floor
-        floorImage={b8f}
-        floorLabel="b8f"
-        answersList={b8fAnswersList}
-        answer={b8fAnswer}
-        setAnswer={setB8fAnswer}
-      />
-      <Floor
-        floorImage={b9f}
-        floorLabel="b9f"
-        answersList={b9fAnswersList}
-        answer={b9fAnswer}
-        setAnswer={setB9fAnswer}
-      />
-      <Floor
-        floorImage={b10f}
-        floorLabel="b10f"
-        answersList={b10fAnswersList}
-        answer={b10fAnswer}
-        setAnswer={setB10fAnswer}
-      />
+      {b1fAnswer ? (
+        <Floor
+          floorImage={b2f}
+          floorLabel="b2f"
+          answersList={b2fAnswersList}
+          answer={b2fAnswer}
+          setAnswer={setB2fAnswer}
+        />
+      ) : null}
+      {b2fAnswer ? (
+        <Floor
+          floorImage={b3f}
+          floorLabel="b3f"
+          answersList={b3fAnswersList}
+          answer={b3fAnswer}
+          setAnswer={setB3fAnswer}
+        />
+      ) : null}
+      {b3fAnswer ? (
+        <Floor
+          floorImage={b4f}
+          floorLabel="b4f"
+          answersList={b4fAnswersList}
+          answer={b4fAnswer}
+          setAnswer={setB4fAnswer}
+        />
+      ) : null}
+      {b4fAnswer ? (
+        <Floor
+          floorImage={b5f}
+          floorLabel="b5f"
+          answersList={b5fAnswersList}
+          answer={b5fAnswer}
+          setAnswer={setB5fAnswer}
+        />
+      ) : null}
+      {b5fAnswer ? (
+        <Floor
+          floorImage={b6f}
+          floorLabel="b6f"
+          answersList={b6fAnswersList}
+          answer={b6fAnswer}
+          setAnswer={setB6fAnswer}
+        />
+      ) : null}
+      {b6fAnswer ? (
+        <Floor
+          floorImage={b7f}
+          floorLabel="b7f"
+          answersList={b7fAnswersList}
+          answer={b7fAnswer}
+          setAnswer={setB7fAnswer}
+        />
+      ) : null}
+      {b7fAnswer ? (
+        <Floor
+          floorImage={b8f}
+          floorLabel="b8f"
+          answersList={b8fAnswersList}
+          answer={b8fAnswer}
+          setAnswer={setB8fAnswer}
+        />
+      ) : null}
+      {b8fAnswer ? (
+        <Floor
+          floorImage={b9f}
+          floorLabel="b9f"
+          answersList={b9fAnswersList}
+          answer={b9fAnswer}
+          setAnswer={setB9fAnswer}
+        />
+      ) : null}
+      {b9fAnswer ? (
+        <Floor
+          floorImage={b10f}
+          floorLabel="b10f"
+          answersList={b10fAnswersList}
+          answer={b10fAnswer}
+          setAnswer={setB10fAnswer}
+        />
+      ) : null}
     </div>
   );
 }

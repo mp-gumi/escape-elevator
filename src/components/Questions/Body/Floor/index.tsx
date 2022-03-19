@@ -35,21 +35,22 @@ const inputFieldStyle = css`
   background: #fff;
 `;
 
-const answerStorage = window.localStorage;
+const storage = window.localStorage;
 
 export function Floor(props: Props) {
   const { floorImage, floorLabel, answersList, answer, setAnswer } = props;
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (answersList.indexOf(answer.toLowerCase()) === -1) {
-      if (answerStorage.getItem(floorLabel) === "clear") {
+      if (storage.getItem(floorLabel) === "clear") {
         return;
       }
       //間違えたときの処理を記述
       console.log("間違いです");
       return;
     }
-    answerStorage.setItem(floorLabel, "clear");
+    // storage.setItem(floorLabel, "clear");
+    storage.setItem(`${floorLabel}Answer`, `${answer.toLocaleLowerCase()}`);
     console.log("正解です");
   };
 
