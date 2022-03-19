@@ -17,6 +17,7 @@
     "react-scripts": "5.0.0",
     "react-scroll": "^1.8.6",
     "ress": "^5.0.2",
+    "swiper": "^8.0.7",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"
   },
