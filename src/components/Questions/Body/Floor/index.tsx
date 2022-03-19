@@ -13,11 +13,16 @@ type Props = {
 
 const wrapperStyle = css`
   display: flex;
+  align-items: center;
+  height: 100vh;
+`;
+const innerStyle = css`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   row-gap: 20px;
   background-color: #202020;
-  height: 100vh;
+  padding-bottom: 50px;
 `;
 const imageStyle = css`
   object-fit: contain;
@@ -60,20 +65,22 @@ export function Floor(props: Props) {
 
   return (
     <div css={wrapperStyle} id={`${floorLabel}`}>
-      <div>
-        <img src={floorImage} alt={floorLabel} css={imageStyle} />
-      </div>
-      <div css={inputFieldWrapperStyle}>
-        <input
-          type="text"
-          placeholder="解答を入力してください"
-          name={floorLabel}
-          value={answer}
-          onChange={inputChange}
-          css={inputFieldStyle}
-        />
-        <div onClick={handleClick} css={checkTextStyle}>
-          確認
+      <div css={innerStyle}>
+        <div>
+          <img src={floorImage} alt={floorLabel} css={imageStyle} />
+        </div>
+        <div css={inputFieldWrapperStyle}>
+          <input
+            type="text"
+            placeholder="解答を入力してください"
+            name={floorLabel}
+            value={answer}
+            onChange={inputChange}
+            css={inputFieldStyle}
+          />
+          <div onClick={handleClick} css={checkTextStyle}>
+            確認
+          </div>
         </div>
       </div>
     </div>
