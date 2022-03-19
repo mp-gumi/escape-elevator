@@ -29,7 +29,6 @@ const innerStyle = css`
   justify-content: center;
   row-gap: 20px;
   background-color: #202020;
-  padding-bottom: 50px;
 `;
 const imageStyle = css`
   object-fit: contain;
@@ -51,7 +50,11 @@ const storage = window.localStorage;
 
 export function Floor(props: Props) {
   const { floorImage, floorLabel, answersList, answer, setAnswer } = props;
-  const { setIsFocus } = useContext(FooterFocusContext);
+  const { isFocus, setIsFocus } = useContext(FooterFocusContext);
+
+  const paddingBottom = css`
+    padding-bottom: ${isFocus ? 0 : "50px"};
+  `;
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -88,7 +91,7 @@ export function Floor(props: Props) {
 
   return (
     <div css={wrapperStyle} id={`${floorLabel}`}>
-      <div css={innerStyle}>
+      <div css={[innerStyle, paddingBottom]}>
         <div>
           <img src={floorImage} alt={floorLabel} css={imageStyle} />
         </div>
