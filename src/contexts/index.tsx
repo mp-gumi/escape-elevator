@@ -22,7 +22,7 @@ export function Contexts({ children }: ChildrenType) {
   const [b8fAnswer, setB8fAnswer] = useState(initialAnswers("b8f"));
   const [b9fAnswer, setB9fAnswer] = useState(initialAnswers("b9f"));
   const [b10fAnswer, setB10fAnswer] = useState(initialAnswers("b10f"));
-  const [floorIndication, setFloorIndication] = useState("1");
+  const [floorIndication, setFloorIndication] = useState("b1f");
   const [isFocus, setIsFocus] = useState(false);
 
   return (

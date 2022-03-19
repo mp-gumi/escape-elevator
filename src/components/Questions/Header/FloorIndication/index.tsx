@@ -21,6 +21,11 @@ const imageStyle = css`
   object-fit: contain;
   height: 100%;
 `;
+const backgroundStyle = css`
+  background: #c0c0c0;
+  height: 70px;
+  width: calc(1920 / 1080 * 70px);
+`;
 
 export function FloorIndication() {
   const { floorIndication } = useContext(IndicationContext);
@@ -47,6 +52,8 @@ export function FloorIndication() {
         return <img src={floor9} alt="current floor" css={imageStyle} />;
       case "b10f":
         return <img src={floor10} alt="current floor" css={imageStyle} />;
+      default:
+        return <div css={backgroundStyle} />;
     }
   }, [floorIndication]);
 
