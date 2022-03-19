@@ -54,8 +54,7 @@ export function Floor(props: Props) {
       console.log("間違いです");
       return;
     }
-    // storage.setItem(floorLabel, "clear");
-    storage.setItem(`${floorLabel}Answer`, `${answer.toLocaleLowerCase()}`);
+    storage.setItem(`${floorLabel}Answer`, `${answer}`);
     console.log("正解です");
   };
 

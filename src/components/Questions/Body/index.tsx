@@ -13,7 +13,7 @@ import b8f from "../../../Images/b8f.png";
 import b9f from "../../../Images/b9f.png";
 import b10f from "../../../Images/b10f.png";
 import { useContext } from "react";
-import { AnswersContext } from "../../../contexts";
+import { AnswersContext } from "../../../contexts/AnswersContext";
 
 const b1fAnswersList = [
   "pencil",

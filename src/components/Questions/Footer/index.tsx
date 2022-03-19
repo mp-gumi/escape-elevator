@@ -3,7 +3,7 @@
 import { jsx, css } from "@emotion/react";
 import { FloorButton } from "./FloorButton";
 import { useContext } from "react";
-import { AnswersContext } from "../../../contexts";
+import { AnswersContext } from "../../../contexts/AnswersContext";
 
 const footerHeight = 150;
 const gap = 10;
