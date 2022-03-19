@@ -1,5 +1,6 @@
 import { AnswersContext } from "./AnswersContext";
 import { IndicationContext } from "./IndicationContext";
+import { FooterFocusContext } from "./FooterDisplayContext";
 import { useState } from "react";
 
 type ChildrenType = {
@@ -22,6 +23,7 @@ export function Contexts({ children }: ChildrenType) {
   const [b9fAnswer, setB9fAnswer] = useState(initialAnswers("b9f"));
   const [b10fAnswer, setB10fAnswer] = useState(initialAnswers("b10f"));
   const [floorIndication, setFloorIndication] = useState("1");
+  const [isFocus, setIsFocus] = useState(false);
 
   return (
     <AnswersContext.Provider
@@ -51,7 +53,9 @@ export function Contexts({ children }: ChildrenType) {
       <IndicationContext.Provider
         value={{ floorIndication, setFloorIndication }}
       >
-        {children}
+        <FooterFocusContext.Provider value={{ isFocus, setIsFocus }}>
+          {children}
+        </FooterFocusContext.Provider>
       </IndicationContext.Provider>
     </AnswersContext.Provider>
   );

@@ -1,7 +1,14 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useContext,
+} from "react";
+import { FooterFocusContext } from "../../../../contexts/FooterDisplayContext";
 
 type Props = {
   floorImage: string;
@@ -44,23 +51,40 @@ const storage = window.localStorage;
 
 export function Floor(props: Props) {
   const { floorImage, floorLabel, answersList, answer, setAnswer } = props;
+  const { setIsFocus } = useContext(FooterFocusContext);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    if (answersList.indexOf(answer.toLowerCase()) === -1) {
-      if (storage.getItem(floorLabel) === "clear") {
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      if (answersList.indexOf(answer.toLowerCase()) === -1) {
+        if (storage.getItem(floorLabel) === "clear") {
+          return;
+        }
+        //間違えたときの処理を記述
+        console.log("間違いです");
         return;
       }
-      //間違えたときの処理を記述
-      console.log("間違いです");
-      return;
-    }
-    storage.setItem(`${floorLabel}Answer`, `${answer}`);
-    console.log("正解です");
-  };
+      storage.setItem(`${floorLabel}Answer`, `${answer}`);
+      console.log("正解です");
+    },
+    [answer, answersList, floorLabel]
+  );
 
-  const inputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setAnswer(event.currentTarget.value);
-  };
+  const inputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setAnswer(event.currentTarget.value);
+    },
+    [setAnswer]
+  );
+
+  const handleFocus = useCallback(() => {
+    if (window.innerWidth > 600) return;
+    setIsFocus(true);
+  }, [setIsFocus]);
+
+  const handleBlur = useCallback(() => {
+    if (window.innerWidth > 600) return;
+    setIsFocus(false);
+  }, [setIsFocus]);
 
   return (
     <div css={wrapperStyle} id={`${floorLabel}`}>
@@ -75,7 +99,10 @@ export function Floor(props: Props) {
             name={floorLabel}
             value={answer}
             onChange={inputChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             css={inputFieldStyle}
+            id="answerFormID"
           />
           <div onClick={handleClick} css={checkTextStyle}>
             確認

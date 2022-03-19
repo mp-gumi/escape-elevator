@@ -2,8 +2,9 @@
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 import { FloorButton } from "./FloorButton";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { AnswersContext } from "../../../contexts/AnswersContext";
+import { FooterFocusContext } from "../../../contexts/FooterDisplayContext";
 
 const footerHeight = 150;
 const gap = 10;
@@ -11,7 +12,6 @@ const gap = 10;
 const wrapperStyle = css`
   position: fixed;
   bottom: 0;
-  display: flex;
   flex-direction: column;
   gap: ${gap}px;
   background: linear-gradient(
@@ -28,7 +28,6 @@ const wrapperStyle = css`
   z-index: 10;
   max-width: 600px;
 `;
-
 const buttonStyle = css`
   width: calc((${footerHeight}px - (${gap}px * 3)) / 2);
   height: calc((${footerHeight}px - (${gap}px * 3)) / 2);
@@ -50,11 +49,19 @@ export function Footer() {
     b7fAnswer,
     b8fAnswer,
     b9fAnswer,
-    // b10fAnswer,
   } = useContext(AnswersContext);
+  const { isFocus } = useContext(FooterFocusContext);
+
+  const wrapperDisplay = useMemo(
+    () =>
+      css`
+        display: ${isFocus ? "none" : "flex"};
+      `,
+    [isFocus]
+  );
 
   return (
-    <div css={wrapperStyle}>
+    <div css={[wrapperStyle, wrapperDisplay]} id="footerID">
       <div css={buttonsWrapperStyle}>
         <div css={buttonStyle}>
           <FloorButton floorLabel="1" disabled={false} />

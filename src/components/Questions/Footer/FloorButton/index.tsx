@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 import { Link } from "react-scroll";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { IndicationContext } from "../../../../contexts/IndicationContext";
 
 type Props = {
@@ -33,9 +33,9 @@ export function FloorButton(props: Props) {
   const { floorLabel, disabled } = props;
   const { setFloorIndication } = useContext(IndicationContext);
 
-  const handleSetActive = () => {
+  const handleSetActive = useCallback(() => {
     setFloorIndication(`b${floorLabel}f`);
-  };
+  }, [floorLabel, setFloorIndication]);
 
   return disabled ? (
     <div css={[buttonStyle, disableButtonColor]}>{floorLabel}</div>
