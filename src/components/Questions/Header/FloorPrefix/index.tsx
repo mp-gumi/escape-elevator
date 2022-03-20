@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AnswersContext } from "../../../../contexts/AnswersContext";
 
@@ -31,29 +31,46 @@ const basementColor = css`
   color: #00a3ff;
 `;
 
-const mutablePrefix = () => {
-  return (
-    <Swiper
-      direction="vertical"
-      initialSlide={2}
-      width={squareSize}
-      height={squareSize}
-    >
-      <SwiperSlide>
-        <div css={[innerStyle, roofColor]}>R</div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div css={[innerStyle]}></div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div css={[innerStyle, basementColor]}>B</div>
-      </SwiperSlide>
-    </Swiper>
-  );
-};
-
 export function FloorPrefix() {
-  const { b10fAnswer } = useContext(AnswersContext);
+  const [currentPrefix, setCurrentPrefix] = useState("base");
+  const { answers } = useContext(AnswersContext);
+  const b10fAnswer = answers.b10fAnswer;
+
+  console.log(currentPrefix);
+
+  const mutablePrefix = useCallback(() => {
+    return (
+      <Swiper
+        direction="vertical"
+        initialSlide={2}
+        width={squareSize}
+        height={squareSize}
+        onSlideChangeTransitionEnd={(swiper) => {
+          switch (swiper.activeIndex) {
+            case 0:
+              setCurrentPrefix("roof");
+              break;
+            case 1:
+              setCurrentPrefix("");
+              break;
+            case 2:
+              setCurrentPrefix("base");
+              break;
+          }
+        }}
+      >
+        <SwiperSlide>
+          <div css={[innerStyle, roofColor]}>R</div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div css={[innerStyle]}></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div css={[innerStyle, basementColor]}>B</div>
+        </SwiperSlide>
+      </Swiper>
+    );
+  }, []);
 
   return (
     <div css={wrapperStyle}>

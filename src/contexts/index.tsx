@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { AnswersContext } from "./AnswersContext";
 import { IndicationContext } from "./IndicationContext";
 import { FooterFocusContext } from "./FooterDisplayContext";
-import { useState } from "react";
+import { IsClearedContext } from "./isClearedContext";
 
 type ChildrenType = {
   children: React.ReactNode;
@@ -10,51 +11,52 @@ type ChildrenType = {
 const initialAnswers = (label: string): string => {
   return window.localStorage.getItem(`${label}Answer`) || "";
 };
+const initialIsCleared = (label: string): boolean => {
+  return Boolean(window.localStorage.getItem(`${label}Answer`));
+};
 
 export function Contexts({ children }: ChildrenType) {
-  const [b1fAnswer, setB1fAnswer] = useState(initialAnswers("b1f"));
-  const [b2fAnswer, setB2fAnswer] = useState(initialAnswers("b2f"));
-  const [b3fAnswer, setB3fAnswer] = useState(initialAnswers("b3f"));
-  const [b4fAnswer, setB4fAnswer] = useState(initialAnswers("b4f"));
-  const [b5fAnswer, setB5fAnswer] = useState(initialAnswers("b5f"));
-  const [b6fAnswer, setB6fAnswer] = useState(initialAnswers("b6f"));
-  const [b7fAnswer, setB7fAnswer] = useState(initialAnswers("b7f"));
-  const [b8fAnswer, setB8fAnswer] = useState(initialAnswers("b8f"));
-  const [b9fAnswer, setB9fAnswer] = useState(initialAnswers("b9f"));
-  const [b10fAnswer, setB10fAnswer] = useState(initialAnswers("b10f"));
+  const [answers, setAnswers] = useState({
+    b1fAnswer: initialAnswers("b1f"),
+    b2fAnswer: initialAnswers("b2f"),
+    b3fAnswer: initialAnswers("b3f"),
+    b4fAnswer: initialAnswers("b4f"),
+    b5fAnswer: initialAnswers("b5f"),
+    b6fAnswer: initialAnswers("b6f"),
+    b7fAnswer: initialAnswers("b7f"),
+    b8fAnswer: initialAnswers("b8f"),
+    b9fAnswer: initialAnswers("b9f"),
+    b10fAnswer: initialAnswers("b10f"),
+  });
   const [floorIndication, setFloorIndication] = useState("b1f");
   const [isFocus, setIsFocus] = useState(false);
+  const [isCleared, setIsCleared] = useState({
+    b1fIsCleared: initialIsCleared("b1f"),
+    b2fIsCleared: initialIsCleared("b2f"),
+    b3fIsCleared: initialIsCleared("b3f"),
+    b4fIsCleared: initialIsCleared("b4f"),
+    b5fIsCleared: initialIsCleared("b5f"),
+    b6fIsCleared: initialIsCleared("b6f"),
+    b7fIsCleared: initialIsCleared("b7f"),
+    b8fIsCleared: initialIsCleared("b8f"),
+    b9fIsCleared: initialIsCleared("b9f"),
+    b10fIsCleared: initialIsCleared("b10f"),
+  });
 
   return (
     <AnswersContext.Provider
       value={{
-        b1fAnswer,
-        setB1fAnswer,
-        b2fAnswer,
-        setB2fAnswer,
-        b3fAnswer,
-        setB3fAnswer,
-        b4fAnswer,
-        setB4fAnswer,
-        b5fAnswer,
-        setB5fAnswer,
-        b6fAnswer,
-        setB6fAnswer,
-        b7fAnswer,
-        setB7fAnswer,
-        b8fAnswer,
-        setB8fAnswer,
-        b9fAnswer,
-        setB9fAnswer,
-        b10fAnswer,
-        setB10fAnswer,
+        answers,
+        setAnswers,
       }}
     >
       <IndicationContext.Provider
         value={{ floorIndication, setFloorIndication }}
       >
         <FooterFocusContext.Provider value={{ isFocus, setIsFocus }}>
-          {children}
+          <IsClearedContext.Provider value={{ isCleared, setIsCleared }}>
+            {children}
+          </IsClearedContext.Provider>
         </FooterFocusContext.Provider>
       </IndicationContext.Provider>
     </AnswersContext.Provider>

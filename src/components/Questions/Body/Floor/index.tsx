@@ -1,21 +1,26 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useContext,
-} from "react";
+import { ChangeEvent, useCallback, useContext } from "react";
 import { FooterFocusContext } from "../../../../contexts/FooterDisplayContext";
+import { AnswersContext } from "../../../../contexts/AnswersContext";
+import { IsClearedContext } from "../../../../contexts/isClearedContext";
 
 type Props = {
   floorImage: string;
-  floorLabel: string;
+  floorLabel:
+    | "b1f"
+    | "b2f"
+    | "b3f"
+    | "b4f"
+    | "b5f"
+    | "b6f"
+    | "b7f"
+    | "b8f"
+    | "b9f"
+    | "b10f";
   answersList: string[];
   answer: string;
-  setAnswer: Dispatch<SetStateAction<string>>;
 };
 
 const wrapperStyle = css`
@@ -49,8 +54,10 @@ const inputFieldStyle = css`
 const storage = window.localStorage;
 
 export function Floor(props: Props) {
-  const { floorImage, floorLabel, answersList, answer, setAnswer } = props;
+  const { floorImage, floorLabel, answersList, answer } = props;
   const { isFocus, setIsFocus } = useContext(FooterFocusContext);
+  const { answers, setAnswers } = useContext(AnswersContext);
+  const { isCleared, setIsCleared } = useContext(IsClearedContext);
 
   const paddingBottom = css`
     padding-bottom: ${isFocus ? 0 : "50px"};
@@ -59,24 +66,87 @@ export function Floor(props: Props) {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       if (answersList.indexOf(answer.toLowerCase()) === -1) {
-        if (storage.getItem(floorLabel) === "clear") {
+        if (Boolean(storage.getItem(`${floorLabel}Answer`))) {
           return;
         }
         //間違えたときの処理を記述
         console.log("間違いです");
         return;
       }
+
+      //正解したときの処理を記述
+      switch (floorLabel) {
+        case "b1f":
+          setIsCleared({ ...isCleared, b1fIsCleared: true });
+          break;
+        case "b2f":
+          setIsCleared({ ...isCleared, b2fIsCleared: true });
+          break;
+        case "b3f":
+          setIsCleared({ ...isCleared, b3fIsCleared: true });
+          break;
+        case "b4f":
+          setIsCleared({ ...isCleared, b4fIsCleared: true });
+          break;
+        case "b5f":
+          setIsCleared({ ...isCleared, b5fIsCleared: true });
+          break;
+        case "b6f":
+          setIsCleared({ ...isCleared, b6fIsCleared: true });
+          break;
+        case "b7f":
+          setIsCleared({ ...isCleared, b7fIsCleared: true });
+          break;
+        case "b8f":
+          setIsCleared({ ...isCleared, b8fIsCleared: true });
+          break;
+        case "b9f":
+          setIsCleared({ ...isCleared, b9fIsCleared: true });
+          break;
+        case "b10f":
+          setIsCleared({ ...isCleared, b10fIsCleared: true });
+      }
       storage.setItem(`${floorLabel}Answer`, `${answer}`);
       console.log("正解です");
     },
-    [answer, answersList, floorLabel]
+    [answer, answersList, floorLabel, isCleared, setIsCleared]
   );
 
   const inputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      setAnswer(event.currentTarget.value);
+      switch (floorLabel) {
+        case "b1f":
+          setAnswers({ ...answers, b1fAnswer: event.currentTarget.value });
+          break;
+        case "b2f":
+          setAnswers({ ...answers, b2fAnswer: event.currentTarget.value });
+          break;
+        case "b3f":
+          setAnswers({ ...answers, b3fAnswer: event.currentTarget.value });
+          break;
+        case "b4f":
+          setAnswers({ ...answers, b4fAnswer: event.currentTarget.value });
+          break;
+        case "b5f":
+          setAnswers({ ...answers, b5fAnswer: event.currentTarget.value });
+          break;
+        case "b6f":
+          setAnswers({ ...answers, b6fAnswer: event.currentTarget.value });
+          break;
+        case "b7f":
+          setAnswers({ ...answers, b7fAnswer: event.currentTarget.value });
+          break;
+        case "b8f":
+          setAnswers({ ...answers, b8fAnswer: event.currentTarget.value });
+          break;
+        case "b9f":
+          setAnswers({ ...answers, b9fAnswer: event.currentTarget.value });
+          break;
+        case "b10f":
+          setAnswers({ ...answers, b10fAnswer: event.currentTarget.value });
+      }
     },
-    [setAnswer]
+    [answers, floorLabel, setAnswers]
   );
 
   const handleFocus = useCallback(() => {

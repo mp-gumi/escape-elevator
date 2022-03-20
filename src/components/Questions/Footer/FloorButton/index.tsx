@@ -6,7 +6,7 @@ import { useCallback, useContext } from "react";
 import { IndicationContext } from "../../../../contexts/IndicationContext";
 
 type Props = {
-  floorLabel: string;
+  floorLabel: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
   disabled: boolean;
 };
 

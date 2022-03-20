@@ -14,6 +14,7 @@ import b9f from "../../../Images/b9f.png";
 import b10f from "../../../Images/b10f.png";
 import { useContext } from "react";
 import { AnswersContext } from "../../../contexts/AnswersContext";
+import { IsClearedContext } from "../../../contexts/isClearedContext";
 
 const b1fAnswersList = [
   "pencil",
@@ -25,7 +26,7 @@ const b1fAnswersList = [
 ];
 const b2fAnswersList = ["button", "ボタン", "ぼたん", "釦"];
 const b3fAnswersList = ["小児科医院", "しょうにかいいん", "ショウニカイイン"];
-const b4fAnswersList = ["ビル", "びる", "building"];
+const b4fAnswersList = ["ビル", "びる", "building", "bill"];
 const b5fAnswersList = ["cafe", "カフェ", "かふぇ"];
 const b6fAnswersList = [
   "curry",
@@ -50,28 +51,33 @@ const wrapperStyle = css`
 `;
 
 export function Body() {
+  const { answers } = useContext(AnswersContext);
   const {
     b1fAnswer,
-    setB1fAnswer,
     b2fAnswer,
-    setB2fAnswer,
     b3fAnswer,
-    setB3fAnswer,
     b4fAnswer,
-    setB4fAnswer,
     b5fAnswer,
-    setB5fAnswer,
     b6fAnswer,
-    setB6fAnswer,
     b7fAnswer,
-    setB7fAnswer,
     b8fAnswer,
-    setB8fAnswer,
     b9fAnswer,
-    setB9fAnswer,
     b10fAnswer,
-    setB10fAnswer,
-  } = useContext(AnswersContext);
+  } = answers;
+
+  const { isCleared } = useContext(IsClearedContext);
+  const {
+    b1fIsCleared,
+    b2fIsCleared,
+    b3fIsCleared,
+    b4fIsCleared,
+    b5fIsCleared,
+    b6fIsCleared,
+    b7fIsCleared,
+    b8fIsCleared,
+    b9fIsCleared,
+    // b10fIsCleared,
+  } = isCleared;
 
   return (
     <div css={wrapperStyle}>
@@ -80,87 +86,77 @@ export function Body() {
         floorLabel="b1f"
         answersList={b1fAnswersList}
         answer={b1fAnswer}
-        setAnswer={setB1fAnswer}
       />
-      {b1fAnswer ? (
+      {b1fIsCleared ? (
         <Floor
           floorImage={b2f}
           floorLabel="b2f"
           answersList={b2fAnswersList}
           answer={b2fAnswer}
-          setAnswer={setB2fAnswer}
         />
       ) : null}
-      {b2fAnswer ? (
+      {b2fIsCleared ? (
         <Floor
           floorImage={b3f}
           floorLabel="b3f"
           answersList={b3fAnswersList}
           answer={b3fAnswer}
-          setAnswer={setB3fAnswer}
         />
       ) : null}
-      {b3fAnswer ? (
+      {b3fIsCleared ? (
         <Floor
           floorImage={b4f}
           floorLabel="b4f"
           answersList={b4fAnswersList}
           answer={b4fAnswer}
-          setAnswer={setB4fAnswer}
         />
       ) : null}
-      {b4fAnswer ? (
+      {b4fIsCleared ? (
         <Floor
           floorImage={b5f}
           floorLabel="b5f"
           answersList={b5fAnswersList}
           answer={b5fAnswer}
-          setAnswer={setB5fAnswer}
         />
       ) : null}
-      {b5fAnswer ? (
+      {b5fIsCleared ? (
         <Floor
           floorImage={b6f}
           floorLabel="b6f"
           answersList={b6fAnswersList}
           answer={b6fAnswer}
-          setAnswer={setB6fAnswer}
         />
       ) : null}
-      {b6fAnswer ? (
+      {b6fIsCleared ? (
         <Floor
           floorImage={b7f}
           floorLabel="b7f"
           answersList={b7fAnswersList}
           answer={b7fAnswer}
-          setAnswer={setB7fAnswer}
         />
       ) : null}
-      {b7fAnswer ? (
+      {b7fIsCleared ? (
         <Floor
           floorImage={b8f}
           floorLabel="b8f"
           answersList={b8fAnswersList}
           answer={b8fAnswer}
-          setAnswer={setB8fAnswer}
         />
       ) : null}
-      {b8fAnswer ? (
+      {b8fIsCleared ? (
         <Floor
           floorImage={b9f}
           floorLabel="b9f"
           answersList={b9fAnswersList}
           answer={b9fAnswer}
-          setAnswer={setB9fAnswer}
         />
       ) : null}
-      {b9fAnswer ? (
+      {b9fIsCleared ? (
         <Floor
           floorImage={b10f}
           floorLabel="b10f"
           answersList={b10fAnswersList}
           answer={b10fAnswer}
-          setAnswer={setB10fAnswer}
         />
       ) : null}
     </div>
