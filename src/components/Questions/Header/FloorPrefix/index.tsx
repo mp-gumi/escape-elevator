@@ -1,9 +1,10 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AnswersContext } from "../../../../contexts/AnswersContext";
+import { FloorPrefixContext } from "../../../../contexts/FloorPrefixContext";
 
 const squareSize = 70;
 
@@ -32,11 +33,12 @@ const basementColor = css`
 `;
 
 export function FloorPrefix() {
-  const [currentPrefix, setCurrentPrefix] = useState("base");
   const { answers } = useContext(AnswersContext);
   const b10fAnswer = answers.b10fAnswer;
 
-  console.log(currentPrefix);
+  const { setFloorPrefix } = useContext(FloorPrefixContext);
+
+  console.log(setFloorPrefix);
 
   const mutablePrefix = useCallback(() => {
     return (
@@ -48,13 +50,13 @@ export function FloorPrefix() {
         onSlideChangeTransitionEnd={(swiper) => {
           switch (swiper.activeIndex) {
             case 0:
-              setCurrentPrefix("roof");
+              setFloorPrefix("roof");
               break;
             case 1:
-              setCurrentPrefix("");
+              setFloorPrefix("");
               break;
             case 2:
-              setCurrentPrefix("base");
+              setFloorPrefix("base");
               break;
           }
         }}
@@ -70,7 +72,7 @@ export function FloorPrefix() {
         </SwiperSlide>
       </Swiper>
     );
-  }, []);
+  }, [setFloorPrefix]);
 
   return (
     <div css={wrapperStyle}>

@@ -3,6 +3,7 @@ import { AnswersContext } from "./AnswersContext";
 import { IndicationContext } from "./IndicationContext";
 import { FooterFocusContext } from "./FooterDisplayContext";
 import { IsClearedContext } from "./isClearedContext";
+import { FloorPrefixContext, FloorPrefixType } from "./FloorPrefixContext";
 
 type ChildrenType = {
   children: React.ReactNode;
@@ -42,6 +43,7 @@ export function Contexts({ children }: ChildrenType) {
     b9fIsCleared: initialIsCleared("b9f"),
     b10fIsCleared: initialIsCleared("b10f"),
   });
+  const [floorPrefix, setFloorPrefix] = useState<FloorPrefixType>("base");
 
   return (
     <AnswersContext.Provider
@@ -55,7 +57,11 @@ export function Contexts({ children }: ChildrenType) {
       >
         <FooterFocusContext.Provider value={{ isFocus, setIsFocus }}>
           <IsClearedContext.Provider value={{ isCleared, setIsCleared }}>
-            {children}
+            <FloorPrefixContext.Provider
+              value={{ floorPrefix, setFloorPrefix }}
+            >
+              {children}
+            </FloorPrefixContext.Provider>
           </IsClearedContext.Provider>
         </FooterFocusContext.Provider>
       </IndicationContext.Provider>
