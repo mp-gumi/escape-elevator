@@ -4,6 +4,7 @@ import { jsx, css } from "@emotion/react";
 import { Link } from "react-scroll";
 import { useCallback, useContext, useMemo, useState } from "react";
 import { IndicationContext } from "../../../../contexts/IndicationContext";
+import { FloorPrefixContext } from "../../../../contexts/FloorPrefixContext";
 
 type Props = {
   floorLabel: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
@@ -30,6 +31,7 @@ const disableButtonStyle = css`
 export function FloorButton(props: Props) {
   const { floorLabel, disabled } = props;
   const { floorIndication, setFloorIndication } = useContext(IndicationContext);
+  const { floorPrefix } = useContext(FloorPrefixContext);
 
   const [isClicked, setIsClicked] = useState(false);
   const handleClick = useCallback(() => {
@@ -39,12 +41,12 @@ export function FloorButton(props: Props) {
       setIsClicked(false);
     }, 1000);
   }, [floorIndication, floorLabel]);
+
   const activeButtonColor = useMemo(
     () => (isClicked ? "#eda413" : "#fff"),
     [isClicked]
   );
   const enableButtonStyle = css`
-    border: 5px solid ${activeButtonColor};
     color: ${activeButtonColor};
   `;
 
@@ -52,19 +54,51 @@ export function FloorButton(props: Props) {
     setFloorIndication(`b${floorLabel}f`);
   }, [floorLabel, setFloorIndication]);
 
-  return disabled ? (
-    <div css={[buttonStyle, disableButtonStyle]}>{floorLabel}</div>
-  ) : (
-    <Link
-      to={`b${floorLabel}f`}
-      offset={-100}
-      smooth={true}
-      spy={true}
-      onSetActive={handleSetActive}
-    >
-      <div css={[buttonStyle, enableButtonStyle]} onClick={handleClick}>
-        {floorLabel}
-      </div>
-    </Link>
-  );
+  const button = useCallback(() => {
+    switch (floorPrefix) {
+      case "base":
+        return disabled ? (
+          <div css={[buttonStyle, disableButtonStyle]}>{floorLabel}</div>
+        ) : (
+          <Link
+            to={`b${floorLabel}f`}
+            offset={-100}
+            smooth={true}
+            spy={true}
+            onSetActive={handleSetActive}
+          >
+            <div css={[buttonStyle, enableButtonStyle]} onClick={handleClick}>
+              {floorLabel}
+            </div>
+          </Link>
+        );
+      case "roof":
+        return <div css={[buttonStyle, disableButtonStyle]}>{floorLabel}</div>;
+      case "":
+        return floorLabel === "1" ? (
+          <Link
+            to={"1f"}
+            offset={-100}
+            smooth={true}
+            spy={true}
+            onSetActive={handleSetActive}
+          >
+            <div css={[buttonStyle, enableButtonStyle]} onClick={handleClick}>
+              {floorLabel}
+            </div>
+          </Link>
+        ) : (
+          <div css={[buttonStyle, disableButtonStyle]}>{floorLabel}</div>
+        );
+    }
+  }, [
+    disabled,
+    enableButtonStyle,
+    floorLabel,
+    floorPrefix,
+    handleClick,
+    handleSetActive,
+  ]);
+
+  return button();
 }

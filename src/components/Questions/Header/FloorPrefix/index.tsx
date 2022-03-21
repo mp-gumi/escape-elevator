@@ -12,6 +12,7 @@ const wrapperStyle = css`
   width: ${squareSize.toString()}px;
   height: ${squareSize.toString()}px;
   overflow: hidden;
+  background: #c0c0c0;
 `;
 const innerStyle = css`
   display: flex;
@@ -37,8 +38,6 @@ export function FloorPrefix() {
   const b10fAnswer = answers.b10fAnswer;
 
   const { setFloorPrefix } = useContext(FloorPrefixContext);
-
-  console.log(setFloorPrefix);
 
   const mutablePrefix = useCallback(() => {
     return (

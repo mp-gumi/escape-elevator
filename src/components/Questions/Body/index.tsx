@@ -15,6 +15,8 @@ import b10f from "../../../Images/b10f.png";
 import { useContext } from "react";
 import { AnswersContext } from "../../../contexts/AnswersContext";
 import { IsClearedContext } from "../../../contexts/isClearedContext";
+import { FloorPrefixContext } from "../../../contexts/FloorPrefixContext";
+import { FirstFloor } from "./FirstFloor";
 
 const b1fAnswersList = [
   "pencil",
@@ -76,11 +78,13 @@ export function Body() {
     b7fIsCleared,
     b8fIsCleared,
     b9fIsCleared,
-    // b10fIsCleared,
   } = isCleared;
+
+  const { floorPrefix } = useContext(FloorPrefixContext);
 
   return (
     <div css={wrapperStyle}>
+      {floorPrefix === "" ? <FirstFloor /> : null}
       <Floor
         floorImage={b1f}
         floorLabel="b1f"
