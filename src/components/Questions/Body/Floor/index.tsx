@@ -26,14 +26,15 @@ type Props = {
 const wrapperStyle = css`
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 120vh;
+  background-color: #202020;
 `;
 const innerStyle = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   row-gap: 20px;
-  background-color: #202020;
+  height: 65vh;
 `;
 const imageStyle = css`
   object-fit: contain;
@@ -55,13 +56,9 @@ const storage = window.localStorage;
 
 export function Floor(props: Props) {
   const { floorImage, floorLabel, answersList, answer } = props;
-  const { isFocus, setIsFocus } = useContext(FooterFocusContext);
+  const { setIsFocus } = useContext(FooterFocusContext);
   const { answers, setAnswers } = useContext(AnswersContext);
   const { isCleared, setIsCleared } = useContext(IsClearedContext);
-
-  const paddingBottom = css`
-    padding-bottom: ${isFocus ? 0 : "50px"};
-  `;
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -160,8 +157,8 @@ export function Floor(props: Props) {
   }, [setIsFocus]);
 
   return (
-    <div css={wrapperStyle} id={`${floorLabel}`}>
-      <div css={[innerStyle, paddingBottom]}>
+    <div css={wrapperStyle}>
+      <div css={innerStyle} id={`${floorLabel}`}>
         <div>
           <img src={floorImage} alt={floorLabel} css={imageStyle} />
         </div>

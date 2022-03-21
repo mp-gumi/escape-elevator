@@ -42,6 +42,7 @@ export function FloorButton(props: Props) {
   ) : (
     <Link
       to={`b${floorLabel}f`}
+      offset={-100}
       smooth={true}
       spy={true}
       onSetActive={handleSetActive}
