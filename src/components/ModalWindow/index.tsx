@@ -20,6 +20,7 @@ const modalStyle = css`
   border-radius: 10px;
   padding: 20px;
   width: 60vw;
+  max-width: 480px;
 `;
 
 export function ModalWindow(props: PropsType) {

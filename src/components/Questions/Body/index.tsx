@@ -38,8 +38,15 @@ const b6fAnswersList = [
   "かれーらいす",
 ];
 const b7fAnswersList = ["助ける", "たすける", "タスケル", "助ケル", "help"];
-const b8fAnswersList = ["height", "高さ", "たかさ", "タカサ"];
-const b9fAnswersList = ["love", "愛", "あい", "アイ"];
+const b8fAnswersList = [
+  "height",
+  "高さ",
+  "たかさ",
+  "タカサ",
+  "はいと",
+  "ハイト",
+];
+const b9fAnswersList = ["love", "愛", "あい", "アイ", "ラブ", "らぶ"];
 const b10fAnswersList = [
   "donut",
   "ドーナツ",

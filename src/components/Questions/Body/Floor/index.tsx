@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { ChangeEvent, useCallback, useContext, useState } from "react";
+import { ChangeEvent, useCallback, useContext, useMemo, useState } from "react";
 import { FooterFocusContext } from "../../../../contexts/FooterDisplayContext";
 import { AnswersContext } from "../../../../contexts/AnswersContext";
 import { IsClearedContext } from "../../../../contexts/isClearedContext";
@@ -34,6 +34,7 @@ const imageStyle = css`
 `;
 const checkTextStyle = css`
   color: #fff;
+  margin: 10px;
 `;
 const inputFieldWrapperStyle = css`
   display: flex;
@@ -55,6 +56,11 @@ export function Floor(props: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
 
+  const numberOfClearedFloors = useMemo(
+    () => Object.values(isCleared).filter(Boolean).length,
+    [isCleared]
+  );
+
   const floorHeight = css`
     height: ${floorLabel === 1 ? "100vh" : "120vh"};
   `;
@@ -71,6 +77,7 @@ export function Floor(props: Props) {
     }
 
     //正解したときの処理を記述
+    if (numberOfClearedFloors >= floorLabel) return;
     switch (floorLabel) {
       case 1:
         setIsCleared({ ...isCleared, b1fIsCleared: true });
@@ -103,11 +110,16 @@ export function Floor(props: Props) {
         setIsCleared({ ...isCleared, b10fIsCleared: true });
     }
     storage.setItem(`b${floorLabel}fAnswer`, `${answer}`);
-    //一度正解した問題で確認してもモーダルを出さない処理
-    if (Object.values(isCleared).filter(Boolean).length >= floorLabel) return;
     setIsCorrectAnswer(true);
     setIsModalOpen(true);
-  }, [answer, answersList, floorLabel, isCleared, setIsCleared]);
+  }, [
+    answer,
+    answersList,
+    floorLabel,
+    isCleared,
+    numberOfClearedFloors,
+    setIsCleared,
+  ]);
 
   const inputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -174,9 +186,9 @@ export function Floor(props: Props) {
             css={inputFieldStyle}
             id="answerFormID"
           />
-          <div onClick={handleClick} css={checkTextStyle}>
+          <button onClick={handleClick} css={checkTextStyle}>
             確認
-          </div>
+          </button>
         </div>
       </div>
       <ModalWindow isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
