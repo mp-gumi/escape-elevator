@@ -26,7 +26,6 @@ type Props = {
 const wrapperStyle = css`
   display: flex;
   align-items: center;
-  height: 120vh;
   background-color: #202020;
 `;
 const innerStyle = css`
@@ -59,6 +58,10 @@ export function Floor(props: Props) {
   const { setIsFocus } = useContext(FooterFocusContext);
   const { answers, setAnswers } = useContext(AnswersContext);
   const { isCleared, setIsCleared } = useContext(IsClearedContext);
+
+  const floorHeight = css`
+    height: ${floorLabel === "b1f" ? "100vh" : "120vh"};
+  `;
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -157,7 +160,7 @@ export function Floor(props: Props) {
   }, [setIsFocus]);
 
   return (
-    <div css={wrapperStyle}>
+    <div css={[wrapperStyle, floorHeight]}>
       <div css={innerStyle} id={`${floorLabel}`}>
         <div>
           <img src={floorImage} alt={floorLabel} css={imageStyle} />
