@@ -66,36 +66,36 @@ export function Footer() {
     <div css={[wrapperStyle, wrapperDisplay]} id="footerID">
       <div css={buttonsWrapperStyle}>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="1" disabled={false} />
+          <FloorButton floorLabel={1} disabled={false} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="2" disabled={!b1fIsCleared} />
+          <FloorButton floorLabel={2} disabled={!b1fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="3" disabled={!b2fIsCleared} />
+          <FloorButton floorLabel={3} disabled={!b2fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="4" disabled={!b3fIsCleared} />
+          <FloorButton floorLabel={4} disabled={!b3fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="5" disabled={!b4fIsCleared} />
+          <FloorButton floorLabel={5} disabled={!b4fIsCleared} />
         </div>
       </div>
       <div css={buttonsWrapperStyle}>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="6" disabled={!b5fIsCleared} />
+          <FloorButton floorLabel={6} disabled={!b5fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="7" disabled={!b6fIsCleared} />
+          <FloorButton floorLabel={7} disabled={!b6fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="8" disabled={!b7fIsCleared} />
+          <FloorButton floorLabel={8} disabled={!b7fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="9" disabled={!b8fIsCleared} />
+          <FloorButton floorLabel={9} disabled={!b8fIsCleared} />
         </div>
         <div css={buttonStyle}>
-          <FloorButton floorLabel="10" disabled={!b9fIsCleared} />
+          <FloorButton floorLabel={10} disabled={!b9fIsCleared} />
         </div>
       </div>
     </div>

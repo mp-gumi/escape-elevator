@@ -1,24 +1,17 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { ChangeEvent, useCallback, useContext } from "react";
+import { ChangeEvent, useCallback, useContext, useState } from "react";
 import { FooterFocusContext } from "../../../../contexts/FooterDisplayContext";
 import { AnswersContext } from "../../../../contexts/AnswersContext";
 import { IsClearedContext } from "../../../../contexts/isClearedContext";
+import { ModalWindow } from "../../../ModalWindow";
+import { IncorrectAnswerModalContent } from "./IncorrectAnswerModalContent";
+import { CorrectAnswerModalContent } from "./CorrectAnswerModalContent";
 
 type Props = {
   floorImage: string;
-  floorLabel:
-    | "b1f"
-    | "b2f"
-    | "b3f"
-    | "b4f"
-    | "b5f"
-    | "b6f"
-    | "b7f"
-    | "b8f"
-    | "b9f"
-    | "b10f";
+  floorLabel: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   answersList: string[];
   answer: string;
 };
@@ -59,90 +52,94 @@ export function Floor(props: Props) {
   const { answers, setAnswers } = useContext(AnswersContext);
   const { isCleared, setIsCleared } = useContext(IsClearedContext);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
+
   const floorHeight = css`
-    height: ${floorLabel === "b1f" ? "100vh" : "120vh"};
+    height: ${floorLabel === 1 ? "100vh" : "120vh"};
   `;
 
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      if (answersList.indexOf(answer.toLowerCase()) === -1) {
-        if (Boolean(storage.getItem(`${floorLabel}Answer`))) {
-          return;
-        }
-        //間違えたときの処理を記述
-        console.log("間違いです");
+  const handleClick = useCallback(() => {
+    if (answersList.indexOf(answer.toLowerCase()) === -1) {
+      if (Boolean(storage.getItem(`b${floorLabel}fAnswer`))) {
         return;
       }
+      //間違えたときの処理を記述
+      setIsCorrectAnswer(false);
+      setIsModalOpen(true);
+      return;
+    }
 
-      //正解したときの処理を記述
-      switch (floorLabel) {
-        case "b1f":
-          setIsCleared({ ...isCleared, b1fIsCleared: true });
-          break;
-        case "b2f":
-          setIsCleared({ ...isCleared, b2fIsCleared: true });
-          break;
-        case "b3f":
-          setIsCleared({ ...isCleared, b3fIsCleared: true });
-          break;
-        case "b4f":
-          setIsCleared({ ...isCleared, b4fIsCleared: true });
-          break;
-        case "b5f":
-          setIsCleared({ ...isCleared, b5fIsCleared: true });
-          break;
-        case "b6f":
-          setIsCleared({ ...isCleared, b6fIsCleared: true });
-          break;
-        case "b7f":
-          setIsCleared({ ...isCleared, b7fIsCleared: true });
-          break;
-        case "b8f":
-          setIsCleared({ ...isCleared, b8fIsCleared: true });
-          break;
-        case "b9f":
-          setIsCleared({ ...isCleared, b9fIsCleared: true });
-          break;
-        case "b10f":
-          setIsCleared({ ...isCleared, b10fIsCleared: true });
-      }
-      storage.setItem(`${floorLabel}Answer`, `${answer}`);
-      console.log("正解です");
-    },
-    [answer, answersList, floorLabel, isCleared, setIsCleared]
-  );
+    //正解したときの処理を記述
+    switch (floorLabel) {
+      case 1:
+        setIsCleared({ ...isCleared, b1fIsCleared: true });
+        break;
+      case 2:
+        setIsCleared({ ...isCleared, b2fIsCleared: true });
+        break;
+      case 3:
+        setIsCleared({ ...isCleared, b3fIsCleared: true });
+        break;
+      case 4:
+        setIsCleared({ ...isCleared, b4fIsCleared: true });
+        break;
+      case 5:
+        setIsCleared({ ...isCleared, b5fIsCleared: true });
+        break;
+      case 6:
+        setIsCleared({ ...isCleared, b6fIsCleared: true });
+        break;
+      case 7:
+        setIsCleared({ ...isCleared, b7fIsCleared: true });
+        break;
+      case 8:
+        setIsCleared({ ...isCleared, b8fIsCleared: true });
+        break;
+      case 9:
+        setIsCleared({ ...isCleared, b9fIsCleared: true });
+        break;
+      case 10:
+        setIsCleared({ ...isCleared, b10fIsCleared: true });
+    }
+    storage.setItem(`b${floorLabel}fAnswer`, `${answer}`);
+    //一度正解した問題で確認してもモーダルを出さない処理
+    if (Object.values(isCleared).filter(Boolean).length >= floorLabel) return;
+    setIsCorrectAnswer(true);
+    setIsModalOpen(true);
+  }, [answer, answersList, floorLabel, isCleared, setIsCleared]);
 
   const inputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       switch (floorLabel) {
-        case "b1f":
+        case 1:
           setAnswers({ ...answers, b1fAnswer: event.currentTarget.value });
           break;
-        case "b2f":
+        case 2:
           setAnswers({ ...answers, b2fAnswer: event.currentTarget.value });
           break;
-        case "b3f":
+        case 3:
           setAnswers({ ...answers, b3fAnswer: event.currentTarget.value });
           break;
-        case "b4f":
+        case 4:
           setAnswers({ ...answers, b4fAnswer: event.currentTarget.value });
           break;
-        case "b5f":
+        case 5:
           setAnswers({ ...answers, b5fAnswer: event.currentTarget.value });
           break;
-        case "b6f":
+        case 6:
           setAnswers({ ...answers, b6fAnswer: event.currentTarget.value });
           break;
-        case "b7f":
+        case 7:
           setAnswers({ ...answers, b7fAnswer: event.currentTarget.value });
           break;
-        case "b8f":
+        case 8:
           setAnswers({ ...answers, b8fAnswer: event.currentTarget.value });
           break;
-        case "b9f":
+        case 9:
           setAnswers({ ...answers, b9fAnswer: event.currentTarget.value });
           break;
-        case "b10f":
+        case 10:
           setAnswers({ ...answers, b10fAnswer: event.currentTarget.value });
       }
     },
@@ -161,15 +158,15 @@ export function Floor(props: Props) {
 
   return (
     <div css={[wrapperStyle, floorHeight]}>
-      <div css={innerStyle} id={`${floorLabel}`}>
+      <div css={innerStyle} id={`b${floorLabel}f`}>
         <div>
-          <img src={floorImage} alt={floorLabel} css={imageStyle} />
+          <img src={floorImage} alt={`b${floorLabel}f`} css={imageStyle} />
         </div>
         <div css={inputFieldWrapperStyle}>
           <input
             type="text"
             placeholder="解答を入力してください"
-            name={floorLabel}
+            name={`b${floorLabel}f`}
             value={answer}
             onChange={inputChange}
             onFocus={handleFocus}
@@ -182,6 +179,13 @@ export function Floor(props: Props) {
           </div>
         </div>
       </div>
+      <ModalWindow isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        {isCorrectAnswer ? (
+          <CorrectAnswerModalContent setIsModalOpen={setIsModalOpen} />
+        ) : (
+          <IncorrectAnswerModalContent setIsModalOpen={setIsModalOpen} />
+        )}
+      </ModalWindow>
     </div>
   );
 }

@@ -87,14 +87,14 @@ export function Body() {
       {floorPrefix === "" ? <FirstFloor /> : null}
       <Floor
         floorImage={b1f}
-        floorLabel="b1f"
+        floorLabel={1}
         answersList={b1fAnswersList}
         answer={b1fAnswer}
       />
       {b1fIsCleared ? (
         <Floor
           floorImage={b2f}
-          floorLabel="b2f"
+          floorLabel={2}
           answersList={b2fAnswersList}
           answer={b2fAnswer}
         />
@@ -102,7 +102,7 @@ export function Body() {
       {b2fIsCleared ? (
         <Floor
           floorImage={b3f}
-          floorLabel="b3f"
+          floorLabel={3}
           answersList={b3fAnswersList}
           answer={b3fAnswer}
         />
@@ -110,7 +110,7 @@ export function Body() {
       {b3fIsCleared ? (
         <Floor
           floorImage={b4f}
-          floorLabel="b4f"
+          floorLabel={4}
           answersList={b4fAnswersList}
           answer={b4fAnswer}
         />
@@ -118,7 +118,7 @@ export function Body() {
       {b4fIsCleared ? (
         <Floor
           floorImage={b5f}
-          floorLabel="b5f"
+          floorLabel={5}
           answersList={b5fAnswersList}
           answer={b5fAnswer}
         />
@@ -126,7 +126,7 @@ export function Body() {
       {b5fIsCleared ? (
         <Floor
           floorImage={b6f}
-          floorLabel="b6f"
+          floorLabel={6}
           answersList={b6fAnswersList}
           answer={b6fAnswer}
         />
@@ -134,7 +134,7 @@ export function Body() {
       {b6fIsCleared ? (
         <Floor
           floorImage={b7f}
-          floorLabel="b7f"
+          floorLabel={7}
           answersList={b7fAnswersList}
           answer={b7fAnswer}
         />
@@ -142,7 +142,7 @@ export function Body() {
       {b7fIsCleared ? (
         <Floor
           floorImage={b8f}
-          floorLabel="b8f"
+          floorLabel={8}
           answersList={b8fAnswersList}
           answer={b8fAnswer}
         />
@@ -150,7 +150,7 @@ export function Body() {
       {b8fIsCleared ? (
         <Floor
           floorImage={b9f}
-          floorLabel="b9f"
+          floorLabel={9}
           answersList={b9fAnswersList}
           answer={b9fAnswer}
         />
@@ -158,7 +158,7 @@ export function Body() {
       {b9fIsCleared ? (
         <Floor
           floorImage={b10f}
-          floorLabel="b10f"
+          floorLabel={10}
           answersList={b10fAnswersList}
           answer={b10fAnswer}
         />

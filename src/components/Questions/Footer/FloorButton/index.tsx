@@ -7,7 +7,7 @@ import { IndicationContext } from "../../../../contexts/IndicationContext";
 import { FloorPrefixContext } from "../../../../contexts/FloorPrefixContext";
 
 type Props = {
-  floorLabel: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
+  floorLabel: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   disabled: boolean;
 };
 
@@ -75,7 +75,7 @@ export function FloorButton(props: Props) {
       case "roof":
         return <div css={[buttonStyle, disableButtonStyle]}>{floorLabel}</div>;
       case "":
-        return floorLabel === "1" ? (
+        return floorLabel === 1 ? (
           <Link
             to={"1f"}
             offset={-100}
