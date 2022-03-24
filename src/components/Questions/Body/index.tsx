@@ -8,7 +8,7 @@ import b3f from "../../../Images/b3f.png";
 import b4f from "../../../Images/b4f.png";
 import b5f from "../../../Images/b5f.png";
 import b6f from "../../../Images/b6f.png";
-import b7f from "../../../Images/b7f.png";
+import b7f from "../../../Images/b7f_2.png";
 import b8f from "../../../Images/b8f.png";
 import b9f from "../../../Images/b9f.png";
 import b10f from "../../../Images/b10f.png";
@@ -37,7 +37,18 @@ const b6fAnswersList = [
   "カレーライス",
   "かれーらいす",
 ];
-const b7fAnswersList = ["助ける", "たすける", "タスケル", "助ケル", "help"];
+const b7fAnswersList = [
+  "+",
+  "＋",
+  "plus",
+  "プラス",
+  "ぷらす",
+  "たす",
+  "足す",
+  "タス",
+  "十",
+  "➕",
+];
 const b8fAnswersList = [
   "height",
   "高さ",

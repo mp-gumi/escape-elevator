@@ -1,7 +1,14 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { ChangeEvent, useCallback, useContext, useMemo, useState } from "react";
+import {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+  KeyboardEvent,
+} from "react";
 import { FooterFocusContext } from "../../../../contexts/FooterDisplayContext";
 import { AnswersContext } from "../../../../contexts/AnswersContext";
 import { IsClearedContext } from "../../../../contexts/isClearedContext";
@@ -168,6 +175,16 @@ export function Floor(props: Props) {
     setIsFocus(false);
   }, [setIsFocus]);
 
+  const handleKeyPress = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        handleClick();
+        event.currentTarget.blur();
+      }
+    },
+    [handleClick]
+  );
+
   return (
     <div css={[wrapperStyle, floorHeight]}>
       <div css={innerStyle} id={`b${floorLabel}f`}>
@@ -181,6 +198,7 @@ export function Floor(props: Props) {
             name={`b${floorLabel}f`}
             value={answer}
             onChange={inputChange}
+            onKeyPress={handleKeyPress}
             onFocus={handleFocus}
             onBlur={handleBlur}
             css={inputFieldStyle}
