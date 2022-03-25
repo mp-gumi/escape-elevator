@@ -3,26 +3,42 @@
 import { jsx, css } from "@emotion/react";
 import { Epilogue } from "./Epilogue";
 import { Explanation } from "./Explanation";
-import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import StartButton from "./StartButton";
 
-const startButtonStyle = css`
-  border: 1px solid #000;
-  width: 160px;
+const wrapperStyle = css`
+  background: rgba(25, 118, 210, 0.2);
+  padding: 20px;
+`;
+const titleStyle = css`
+  font-size: 24px;
+  text-align: center;
+  background: #1976d2;
+  color: #fff;
+  padding: 10px 0;
+`;
+const explanationStyle = css`
+  font-size: 20px;
+  text-align: center;
+  background: #1976d2;
+  color: #fff;
+  padding: 10px 0;
+`;
+const buttonWrapperStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
 `;
 
 export function Introduction() {
-  const navigate = useNavigate();
-  const handleClick = useCallback(() => {
-    navigate("/elevator");
-  }, [navigate]);
-
   return (
-    <div>
+    <div css={wrapperStyle}>
+      <h1 css={titleStyle}>地下エレベーターからの脱出</h1>
       <Epilogue />
+      <h2 css={explanationStyle}>説明</h2>
       <Explanation />
-      <div css={startButtonStyle} onClick={handleClick}>
-        謎解きを始める
+      <div css={buttonWrapperStyle}>
+        <StartButton />
       </div>
     </div>
   );
