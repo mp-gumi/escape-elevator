@@ -2,8 +2,8 @@
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 import { Dispatch, SetStateAction, useContext } from "react";
-import ClearIcon from "@mui/icons-material/Clear";
-import { IsClearedContext } from "../../../../../contexts/isClearedContext";
+import { IsClearedContext } from "../../../../../../contexts/isClearedContext";
+import { CloseIcon } from "../../../../../CloseIcon";
 
 type PropsType = {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -20,18 +20,6 @@ const discriptionStyle = css`
   font-size: 12px;
   margin-bottom: 10px;
 `;
-const iconWrapperStyle = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #969696;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  .MuiSvgIcon-root {
-    color: #fff;
-  }
-`;
 
 export function CorrectAnswerModalContent(props: PropsType) {
   const { setIsModalOpen } = props;
@@ -44,9 +32,7 @@ export function CorrectAnswerModalContent(props: PropsType) {
       <div css={discriptionStyle}>
         {b10fIsCleared ? "1階を目指しましょう！" : "次の階に進みましょう！"}
       </div>
-      <div css={iconWrapperStyle} onClick={() => setIsModalOpen(false)}>
-        <ClearIcon />
-      </div>
+      <CloseIcon setIsModalOpen={setIsModalOpen} />
     </div>
   );
 }

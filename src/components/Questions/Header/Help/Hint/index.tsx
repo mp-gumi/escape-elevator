@@ -10,7 +10,6 @@ import {
   useState,
 } from "react";
 import { IsClearedContext } from "../../../../../contexts/isClearedContext";
-import ClearIcon from "@mui/icons-material/Clear";
 import B1fHint from "./B1fHint";
 import B2fHint from "./B2fHint";
 import B3fHint from "./B3fHint";
@@ -22,6 +21,7 @@ import B8fHint from "./B8fHint";
 import B9fHint from "./B9fHint";
 import B10fHint from "./B10fHint";
 import LastHint from "./LastHint";
+import { CloseIcon } from "../../../../CloseIcon";
 
 type Props = {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -40,19 +40,6 @@ const innerStyle = css`
 `;
 const titleStyle = css`
   flex-shrink: 0;
-`;
-const iconWrapperStyle = css`
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #969696;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  .MuiSvgIcon-root {
-    color: #fff;
-  }
 `;
 
 export default function Hint(props: Props) {
@@ -165,9 +152,7 @@ export default function Hint(props: Props) {
           </Accordion>
         ) : null}
       </div>
-      <div css={iconWrapperStyle} onClick={() => setIsModalOpen(false)}>
-        <ClearIcon />
-      </div>
+      <CloseIcon setIsModalOpen={setIsModalOpen} />
     </div>
   );
 }
