@@ -8,6 +8,7 @@ import StartButton from "./StartButton";
 const wrapperStyle = css`
   background: rgba(25, 118, 210, 0.2);
   padding: 20px;
+  min-height: 100vh;
 `;
 const titleStyle = css`
   font-size: 24px;

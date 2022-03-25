@@ -22,6 +22,11 @@ export function Explanation() {
         右上にある「？」
         を押すとヒントを閲覧することが出来ます。ヒントは、謎解きを進めると追加されていきます。
       </li>
+      <li>
+        問題及びシステムの不具合は、
+        <a href="https://twitter.com/mp_nazo">作者のTwitter</a>
+        のDMにお願いします。
+      </li>
     </ul>
   );
 }
