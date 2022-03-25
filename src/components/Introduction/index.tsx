@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
-import { Epilogue } from "./Epilogue";
+import { Prologue } from "./Prologue";
 import { Explanation } from "./Explanation";
 import StartButton from "./StartButton";
 
@@ -35,7 +35,7 @@ export function Introduction() {
   return (
     <div css={wrapperStyle}>
       <h1 css={titleStyle}>地下エレベーターからの脱出</h1>
-      <Epilogue />
+      <Prologue />
       <h2 css={explanationStyle}>説明</h2>
       <Explanation />
       <div css={buttonWrapperStyle}>

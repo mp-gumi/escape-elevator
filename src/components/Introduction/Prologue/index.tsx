@@ -11,7 +11,7 @@ const wrapperStyle = css`
   }
 `;
 
-export function Epilogue() {
+export function Prologue() {
   return (
     <div css={wrapperStyle}>
       <p>ーー謎解き好きな私の元に届いたのは、一通の手紙だった。</p>

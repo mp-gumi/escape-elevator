@@ -11,7 +11,7 @@ const wrapperStyle = css`
   }
 `;
 
-export function Prologue() {
+export function Epilogue() {
   return (
     <div css={wrapperStyle}>
       <p>

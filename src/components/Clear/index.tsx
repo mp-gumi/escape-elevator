@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 import { jsx, css } from "@emotion/react";
 import { PostScript } from "./PostScript";
-import { Prologue } from "./Prologue";
+import { Epilogue } from "./Epilogue";
 import { TwitterShare } from "./TwitterShare";
 
 const wrapperStyle = css`
@@ -29,7 +29,7 @@ export function Clear() {
         <h2>地下エレベーターからの脱出</h2>
         <h2>Clear!!</h2>
       </div>
-      <Prologue />
+      <Epilogue />
       <hr />
       <PostScript />
       <div css={buttonStyle}>
