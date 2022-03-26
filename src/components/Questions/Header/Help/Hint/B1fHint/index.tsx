@@ -9,7 +9,7 @@ const wrapperStyle = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
 `;
 
 export default function B1fHint() {
