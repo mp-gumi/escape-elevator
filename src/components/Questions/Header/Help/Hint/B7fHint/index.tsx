@@ -9,7 +9,7 @@ const wrapperStyle = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 95%;
+  width: 100%;
 `;
 
 export default function B2fHint() {

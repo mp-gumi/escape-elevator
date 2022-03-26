@@ -39,9 +39,15 @@ const imageStyle = css`
 `;
 const innerStyle = css`
   display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  width: 100%;
 `;
 const inputFieldStyle = css`
   background: #fff;
+  .MuiInputBase-input {
+    width: 100vw;
+  }
 `;
 
 const storage = window.localStorage;
