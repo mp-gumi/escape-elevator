@@ -7,10 +7,10 @@ import { useCallback } from "react";
 
 const wrapperStyle = css`
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   background-color: #202020;
-  height: calc(100vh - 150px);
+  height: 100vh;
   background: #fff;
 `;
 const iconWrapperStyle = css`

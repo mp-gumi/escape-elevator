@@ -10,6 +10,10 @@ const wrapperStyle = css`
     margin: 8px 0;
   }
 `;
+const lastTextStyle = css`
+  text-align: center;
+  padding: 15px 0 10px;
+`;
 
 export function Epilogue() {
   return (
@@ -23,6 +27,7 @@ export function Epilogue() {
       <p>
         「今度はちゃんと上に行けるといいな」と思いながら、彼と共にエレベーターに乗り込むのであった。
       </p>
+      <p css={lastTextStyle}>〜 Fin 〜</p>
     </div>
   );
 }
