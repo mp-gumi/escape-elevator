@@ -10,7 +10,7 @@ import b5f from "../../../Images/b5f.png";
 import b6f from "../../../Images/b6f.png";
 import b7f from "../../../Images/b7f_2.png";
 import b8f from "../../../Images/b8f.png";
-import b9f from "../../../Images/b9f.png";
+import b9f from "../../../Images/b9f_2.png";
 import b10f from "../../../Images/b10f.png";
 import { useContext } from "react";
 import { AnswersContext } from "../../../contexts/AnswersContext";
@@ -57,7 +57,15 @@ const b8fAnswersList = [
   "はいと",
   "ハイト",
 ];
-const b9fAnswersList = ["love", "愛", "あい", "アイ", "ラブ", "らぶ"];
+const b9fAnswersList = [
+  "near",
+  "近い",
+  "ちかい",
+  "チカイ",
+  "近く",
+  "ちかく",
+  "チカク",
+];
 const b10fAnswersList = [
   "donut",
   "ドーナツ",
