@@ -26,7 +26,7 @@ export function TwitterShare() {
     <div css={wrapperStyle}>
       <TwitterShareButton
         title={"エレベーターから無事に脱出することができました！"}
-        url={"https://elevator.mp-works.jp/"}
+        url={"https://elevator.mp-works.jp"}
         hashtags={["地下エレベーターからの脱出", "まになぞ"]}
         css={buttonWrapperStyle}
       >
