@@ -44,7 +44,7 @@ export default function B2fHint() {
       <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
         <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          ３つの「×」には、左から「カ」「ケ」「ル」を当てはめましょう。
+          ３つの「×」に、左から「カ」「ケ」「ル」を当てはめましょう。
         </AccordionDetails>
       </Accordion>
     </div>
