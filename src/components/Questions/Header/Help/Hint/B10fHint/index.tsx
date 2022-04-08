@@ -16,6 +16,7 @@ export default function B2fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -25,18 +26,25 @@ export default function B2fHint() {
     <div css={wrapperStyle}>
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
-        <AccordionDetails>丸にはアルファベットが入ります。</AccordionDetails>
+        <AccordionDetails>
+          左側のイラストは、ネズミとコウモリです。
+        </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
-        <AccordionDetails>
-          オレンジ色の丸が上側のイラスト、水色の丸が下側のイラストを表します。ピンク色の部分は上下で共通のようです。
-        </AccordionDetails>
+        <AccordionDetails>丸にはアルファベットが入ります。</AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          R＋○⑤、B＋○⑤、R＋②④③①、B＋②④③①がそれぞれ言葉になります。
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
           右側水色のイラストは、「バウンド」を表します。
         </AccordionDetails>

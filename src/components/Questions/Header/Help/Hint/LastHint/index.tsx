@@ -16,6 +16,7 @@ export default function LastHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -40,6 +41,13 @@ export default function LastHint() {
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>B10Fの問題を振り返ってみましょう。</AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          画面上部にある階数表示の「B」をスライドさせましょう。
+        </AccordionDetails>
       </Accordion>
     </div>
   );

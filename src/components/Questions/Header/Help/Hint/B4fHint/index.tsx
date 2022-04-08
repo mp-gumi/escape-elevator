@@ -16,6 +16,7 @@ export default function B4fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -33,14 +34,21 @@ export default function B4fHint() {
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          「ー」と「÷」は、(算数で)どんな操作を表しているでしょうか？
+          水色の矢印が表しているものは、「枠」です。
         </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          水色の矢印は、「わる」の「わ」と「ひく」の「ひ」で「枠」を表しています。
+          「ー」と「÷」は、算数におけるどんな操作を表しているでしょうか？
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          水色の矢印は、「わる」の1文字目と「ひく」の2文字目を通っているので「枠」を表します。
         </AccordionDetails>
       </Accordion>
     </div>

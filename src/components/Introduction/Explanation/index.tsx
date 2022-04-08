@@ -15,6 +15,7 @@ export function Explanation() {
   return (
     <ul css={wrapperStyle}>
       <li>１Fにたどり着き、エレベーターのドアを開けばクリアとなります。</li>
+      <li>答えは全て存在する言葉になります。</li>
       <li>
         幸いにもエレベーター内は電波が通じるようです。分からないことがあれば調べて構いません。
       </li>

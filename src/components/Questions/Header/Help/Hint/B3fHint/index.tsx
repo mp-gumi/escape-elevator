@@ -16,6 +16,7 @@ export default function B3fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -26,7 +27,7 @@ export default function B3fHint() {
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          左の図は、５階建てのビルを表しています。
+          左の図は、５階建ての建物を表しています。
         </AccordionDetails>
       </Accordion>
 
@@ -40,7 +41,14 @@ export default function B3fHint() {
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          「ごかい」に「げんせき」と書いてある場合、「げんごかいせき」となるようです。
+          「原石」が「５階」に書いてある場合、「言語解析」となるようです。
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          それぞれの階に書いてある熟語の１文字目と２文字目の間に、階数を入れて読んでみましょう。
         </AccordionDetails>
       </Accordion>
     </div>

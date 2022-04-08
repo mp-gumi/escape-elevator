@@ -16,6 +16,7 @@ export default function B2fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -25,9 +26,7 @@ export default function B2fHint() {
     <div css={wrapperStyle}>
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
-        <AccordionDetails>
-          ？？は、「よみがな」を表しています。
-        </AccordionDetails>
+        <AccordionDetails>？？は、読み仮名を表しています。</AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
@@ -39,6 +38,11 @@ export default function B2fHint() {
 
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>４Fの問題を振り返ってみましょう。</AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
           ３つの「×」には、「カケル」を当てはめましょう。
         </AccordionDetails>
