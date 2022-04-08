@@ -11,6 +11,15 @@ const wrapperStyle = css`
   justify-content: center;
   width: 100%;
 `;
+const red = css`
+  color: #ff654c;
+`;
+const blue = css`
+  color: #00a3ff;
+`;
+const pink = css`
+  color: #ffa3ff;
+`;
 
 export default function B1fHint() {
   const [is1Open, setIs1Open] = useState(false);
@@ -27,21 +36,31 @@ export default function B1fHint() {
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          オレンジ色の部分と水色の部分があり、それらが重なっている部分はピンク色になっています。
+          <span css={red}>赤色</span>
+          の部分と
+          <span css={blue}>青色</span>
+          の部分があり、それらが重なっている部分は
+          <span css={pink}>ピンク色</span>になっています。
         </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          オレンジ色のイラスト同士、水色のイラスト同士、それぞれ反対の意味を表す言葉になります。
+          <span css={red}>赤色</span>
+          のイラスト同士、
+          <span css={blue}>青色</span>
+          のイラスト同士、それぞれ反対の意味を表す言葉になります。
         </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          オレンジ色のイラストは「開ける」「閉める」を、水色のイラストは「勝つ」「負ける」を表しています。
+          <span css={red}>赤色</span>
+          のイラストは「開ける」「閉める」を、
+          <span css={blue}>青色</span>
+          のイラストは「勝つ」「負ける」を表しています。
         </AccordionDetails>
       </Accordion>
 

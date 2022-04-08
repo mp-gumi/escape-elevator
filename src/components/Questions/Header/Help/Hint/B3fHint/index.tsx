@@ -27,7 +27,7 @@ export default function B3fHint() {
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          左の図は、５階建ての建物を表しています。
+          左の図は、５階建てのビルを表しています。
         </AccordionDetails>
       </Accordion>
 
