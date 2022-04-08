@@ -11,6 +11,9 @@ const wrapperStyle = css`
   justify-content: center;
   width: 100%;
 `;
+const blue = css`
+  color: #00a3ff;
+`;
 
 export default function B4fHint() {
   const [is1Open, setIs1Open] = useState(false);
@@ -27,14 +30,16 @@ export default function B4fHint() {
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          水色の矢印は、ある２文字のものを表しています。
+          <span css={blue}>青色</span>
+          の矢印は、ある２文字のものを表しています。
         </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          水色の矢印が表しているものは、「枠」です。
+          <span css={blue}>青色</span>
+          の矢印が表しているものは、「枠」です。
         </AccordionDetails>
       </Accordion>
 
@@ -48,7 +53,8 @@ export default function B4fHint() {
       <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
         <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          水色の矢印は、「わる」の1文字目と「ひく」の2文字目を通っているので「枠」を表します。
+          <span css={blue}>青色</span>
+          の矢印は、「わる」の1文字目と「ひく」の2文字目を通っているので「枠」を表します。
         </AccordionDetails>
       </Accordion>
     </div>

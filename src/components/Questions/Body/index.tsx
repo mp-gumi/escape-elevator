@@ -8,10 +8,10 @@ import b3f from "../../../Images/b3f.png";
 import b4f from "../../../Images/b4f.png";
 import b5f from "../../../Images/b5f.png";
 import b6f from "../../../Images/b6f.png";
-import b7f from "../../../Images/b7f_2.png";
+import b7f from "../../../Images/b7f_3.png";
 import b8f from "../../../Images/b8f.png";
 import b9f from "../../../Images/b9f_2.png";
-import b10f from "../../../Images/b10f.png";
+import b10f from "../../../Images/b10f_2.png";
 import { useContext } from "react";
 import { AnswersContext } from "../../../contexts/AnswersContext";
 import { IsClearedContext } from "../../../contexts/isClearedContext";
@@ -65,6 +65,10 @@ const b9fAnswersList = [
   "近く",
   "ちかく",
   "チカク",
+  "ニア",
+  "にあ",
+  "ニアー",
+  "にあー",
 ];
 const b10fAnswersList = [
   "donut",

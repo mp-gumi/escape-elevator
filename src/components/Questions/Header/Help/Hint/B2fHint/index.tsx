@@ -11,6 +11,12 @@ const wrapperStyle = css`
   justify-content: center;
   width: 100%;
 `;
+const red = css`
+  color: #ff654c;
+`;
+const blue = css`
+  color: #00a3ff;
+`;
 
 export default function B2fHint() {
   const [is1Open, setIs1Open] = useState(false);
@@ -34,7 +40,14 @@ export default function B2fHint() {
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          オレンジ色の下線部を英訳したものがオレンジ色の枠に、水色の下線部を英訳したものが水色の枠に入ります。
+          <span css={red}>赤色</span>
+          の下線部を英訳したものが
+          <span css={red}>赤色</span>
+          の枠に、
+          <span css={blue}>青色</span>
+          の下線部を英訳したものが
+          <span css={blue}>青色</span>
+          の枠に入ります。
         </AccordionDetails>
       </Accordion>
 
@@ -48,7 +61,10 @@ export default function B2fHint() {
       <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
         <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          オレンジ色の枠には"not"が、水色の枠には"but"が入ります。
+          <span css={red}>赤色</span>
+          の枠には"not"が、
+          <span css={blue}>青色</span>
+          の枠には"but"が入ります。
         </AccordionDetails>
       </Accordion>
     </div>

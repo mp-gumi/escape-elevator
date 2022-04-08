@@ -11,6 +11,15 @@ const wrapperStyle = css`
   justify-content: center;
   width: 100%;
 `;
+const red = css`
+  color: #ff654c;
+`;
+const blue = css`
+  color: #00a3ff;
+`;
+const pink = css`
+  color: #ffa3ff;
+`;
 
 export default function B2fHint() {
   const [is1Open, setIs1Open] = useState(false);
@@ -27,26 +36,32 @@ export default function B2fHint() {
       <Accordion onChange={() => handleChange(is1Open, setIs1Open)}>
         <AccordionSummary>ヒント①　{is1Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          左側のイラストは、ネズミとコウモリです。
+          <span css={blue}>青の矢印</span>(<span css={blue}>↑</span>)と
+          <span css={red}>赤の矢印</span>(<span css={red}>↓</span>)
+          に従って指を動かすと、RとBはどの位置に移動するでしょうか？
         </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
-        <AccordionDetails>丸にはアルファベットが入ります。</AccordionDetails>
+        <AccordionDetails>
+          <span css={pink}>ピンク色</span>の枠内に、合計で4つの単語ができます。
+        </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          R＋○⑤、B＋○⑤、R＋②④③①、B＋②④③①がそれぞれ言葉になります。
+          左側の丸には「AT」が入り、「RAT」「BAT」を表します。
         </AccordionDetails>
       </Accordion>
 
       <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
         <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          右側水色のイラストは、「バウンド」を表します。
+          右側
+          <span css={blue}>青色</span>
+          のイラストは、「バウンド」を表します。
         </AccordionDetails>
       </Accordion>
     </div>
