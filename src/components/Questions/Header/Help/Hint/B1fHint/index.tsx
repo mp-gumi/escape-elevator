@@ -16,6 +16,7 @@ export default function B1fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -33,7 +34,7 @@ export default function B1fHint() {
       <Accordion onChange={() => handleChange(is2Open, setIs2Open)}>
         <AccordionSummary>ヒント②　{is2Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
-          オレンジ色のイラスト同士、水色のイラスト同士、それぞれ反対の意味を表しています。
+          オレンジ色のイラスト同士、水色のイラスト同士、それぞれ反対の意味を表す言葉になります。
         </AccordionDetails>
       </Accordion>
 
@@ -41,6 +42,13 @@ export default function B1fHint() {
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
           オレンジ色のイラストは「開ける」「閉める」を、水色のイラストは「勝つ」「負ける」を表しています。
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          上から、「OPEN」「CLOSE」「WIN」が入ります。
         </AccordionDetails>
       </Accordion>
     </div>

@@ -16,6 +16,7 @@ export default function B5fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -41,6 +42,13 @@ export default function B5fHint() {
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
           4文字の方は、アルファベット２文字の言葉です。
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          ３文字の方は階数を、４文字の方は物語のジャンルを表す言葉になります。
         </AccordionDetails>
       </Accordion>
     </div>

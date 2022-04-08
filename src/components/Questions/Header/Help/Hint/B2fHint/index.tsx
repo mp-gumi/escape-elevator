@@ -16,6 +16,7 @@ export default function B2fHint() {
   const [is1Open, setIs1Open] = useState(false);
   const [is2Open, setIs2Open] = useState(false);
   const [is3Open, setIs3Open] = useState(false);
+  const [is4Open, setIs4Open] = useState(false);
 
   const handleChange = useCallback((state, setState) => {
     setState(!state);
@@ -39,6 +40,13 @@ export default function B2fHint() {
 
       <Accordion onChange={() => handleChange(is3Open, setIs3Open)}>
         <AccordionSummary>ヒント③　{is3Open ? "▲" : "▼"}</AccordionSummary>
+        <AccordionDetails>
+          どちらの枠にも、3文字の英単語が入ります。
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion onChange={() => handleChange(is4Open, setIs4Open)}>
+        <AccordionSummary>最終ヒント　{is4Open ? "▲" : "▼"}</AccordionSummary>
         <AccordionDetails>
           オレンジ色の枠には"not"が、水色の枠には"but"が入ります。
         </AccordionDetails>
